@@ -1,0 +1,35 @@
+#!/bin/zsh
+
+# Your cisco vpn binary path
+__VPN_ADDRESS=""
+__CLIENT="/opt/cisco/anyconnect/bin/vpn"
+__GROUP="0"
+__USERNAME=""
+__PASSWORD=""
+__SECOND_PASSWORD="PUSH"
+
+op=""
+disconnect="$__CLIENT -s stats | grep notice"
+key="$1"
+
+case $key in
+    state | status)
+      op="$__CLIENT -s stats | grep $__VPN_ADDRESS"
+    ;;
+
+    connect)                                                                                      #suppress output
+      op="printf \"$__GROUP\n$__USERNAME\n$__PASSWORD\n$__SECOND_PASSWORD\" | $__CLIENT -s connect $__VPN_ADDRESS > /dev/null"
+      echo "Connecting to $__VPN_ADDRESS"
+      echo "Please complete the $__SECOND_PASSWORD process from your phone."
+    ;;
+
+    disconnect)
+      op="$__CLIENT disconnect > /dev/null"
+      echo "disconnected"
+    ;;
+ esac
+
+eval "${op}"
+eval "${disconnect}"
+
+exit 0
