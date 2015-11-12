@@ -6,7 +6,7 @@ Simple Cisco AnyConnect VPN CLI tool.
 ## Setup
 Step one: Get the VPN bash script from the github repo (curl command below)
 
-    `curl -o ./vpn https://raw.githubusercontent.com/amoskyler/anyconnect-vpn-helper/master/bin/vpn && chmod 700 .vpn && mv ./vpn /usr/local/bin`
+    curl -o ./vpn https://raw.githubusercontent.com/amoskyler/anyconnect-vpn-helper/master/bin/vpn && chmod 700 .vpn && mv ./vpn /usr/local/bin
 
 This will do three things:
   1. Download the vpn CLI script from the github repository and store it in a file at your current directory named `vpn`
