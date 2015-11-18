@@ -40,7 +40,11 @@ Step three:
 ### `vpn status`
   - Type `vpn status` to check if the vpn is currently connected
 
+### `-v` (verbose)
+  - type `-v` as the second command argument to enable verbose output (e.g. `vpn connect -v`)
+  - __notice:__ This will output your vpn authentication information.
 
 ## Known Issues
   - Disconnects unexpectedly due to 'inactivity'
   - The VPN will not connect (but will also not throw an obvious error due to output suppression) if another vpn client is open
+  - Verbose flag only support `-v` but not alternate forms (i.e. `--verbose`, `-verbose`)

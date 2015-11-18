@@ -9,8 +9,15 @@ __PASSWORD=""
 __SECOND_PASSWORD="PUSH"
 
 op=""
+_VERBOSITY="> /dev/null"
 disconnect="$__CLIENT -s stats | grep notice"
 key="$1"
+
+# evaluate verbosity options
+# todo: implement proper token consumption
+if [[ "$2" == "-v"]] ; then
+  _VERBOSITY=""
+fi
 
 case $key in
     state | status)
@@ -18,7 +25,7 @@ case $key in
     ;;
 
     connect)                                                                                      #suppress output
-      op="printf \"$__GROUP\n$__USERNAME\n$__PASSWORD\n$__SECOND_PASSWORD\" | $__CLIENT -s connect $__VPN_ADDRESS > /dev/null"
+      op="printf \"$__GROUP\n$__USERNAME\n$__PASSWORD\n$__SECOND_PASSWORD\" | $__CLIENT -s connect $__VPN_ADDRESS $_VERBOSITY"
       echo "Connecting to $__VPN_ADDRESS"
       echo "Please complete the $__SECOND_PASSWORD process from your phone."
     ;;
