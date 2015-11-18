@@ -15,7 +15,7 @@ key="$1"
 
 # evaluate verbosity options
 # todo: implement proper token consumption
-if [[ "$2" == "-v"]] ; then
+if [[ "$2" == "-v" ]] ; then
   _VERBOSITY=""
 fi
 
